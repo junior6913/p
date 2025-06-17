@@ -932,7 +932,7 @@ spawn(function()
 end)
 
 local function monitorGame()
-    local SCRIPT_URL = "https://github.com/junior6913/flee/blob/main/flee.txt"
+    local SCRIPT_URL = "https://raw.githubusercontent.com/junior6913/p/refs/heads/main/f.txt"
 
     spawn(function()
 
