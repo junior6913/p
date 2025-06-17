@@ -1,18 +1,22 @@
-local FOV = 95
+_G.FOV = 95
+_G.FOV_Toggle = false
 
-local workspace = findfirstchild(Game, "Workspace")
-if workspace then
-    local camera = findfirstchild(workspace, "Camera")
-    if camera then
-
-        local calculated_fov = (FOV / 70) * 1.222
-        setmemoryvalue(camera, 0x168, "float", calculated_fov)
-        print("FOV set to " .. calculated_fov)
-    else
-        print("Camera not found in Workspace")
+if workspace.Camera then
+    local ZoomFOV = function()
+        workspace.Camera:SetMemoryValue(0x168, "float", (_G.FOV / 70) * 1.222) -- Set initial FOV
+        while true do
+            local keys = getpressedkeys()
+            if table.find(keys, "C") then
+                _G.FOV_Toggle = not _G.FOV_Toggle
+                local newFOV = _G.FOV_Toggle and 70 or 95
+                workspace.Camera:SetMemoryValue(0x168, "float", (newFOV / 70) * 1.222)
+                wait(0.2) -- Add debounce to prevent rapid toggling
+            end
+            wait()
+        end
     end
-else
-    print("Workspace not found")
+
+    spawn(ZoomFOV)
 end
 
 local findfirstchild = findfirstchild
