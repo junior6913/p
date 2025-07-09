@@ -1,20 +1,3 @@
-local FOV = 95
-
-local workspace = findfirstchild(Game, "Workspace")
-if workspace then
-    local camera = findfirstchild(workspace, "Camera")
-    if camera then
-
-        local calculated_fov = (FOV / 70) * 1.222
-        setmemoryvalue(camera, 0x168, "float", calculated_fov)
-        print("FOV set to " .. calculated_fov)
-    else
-        print("Camera not found in Workspace")
-    end
-else
-    print("Workspace not found")
-end
-
 local findfirstchild = findfirstchild
 local getchildren = getchildren
 local worldtoscreenpoint = worldtoscreenpoint
