@@ -928,7 +928,7 @@ spawn(function()
 end)
 
 local function monitorGame()
-    local SCRIPT_URL = "https://raw.githubusercontent.com/anue1337/test-script-/refs/heads/main/f"
+    local SCRIPT_URL = "https://raw.githubusercontent.com/junior6913/p/refs/heads/main/flee.lua"
 
     spawn(function()
 
